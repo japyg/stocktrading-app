@@ -1,0 +1,9 @@
+<%= render "layouts/alerts" %>
+<% if current_user %>
+  <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to "Sign In", new_user_session_path %>
+<% end %>
+
+<h1>This is our home page!</h1>
+
