@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Stock Trading App</a>
+  
+  <% if current_user %>
+    <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to "Sign In", new_user_session_path %>
+    <%= link_to "Sign Up", new_user_registration_path %>
+  <% end %>
+    
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      
+    </ul>
+    
+  </div>
+</nav>
