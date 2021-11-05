@@ -1,8 +1,14 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-
+  # before_action :authenticate_admin
+  
+       
   def index
-    @users = User.all
+    if current_user.admin 
+      @users = User.all
+    else
+      redirect_to root_path
+    end
   end
 
   def new
@@ -44,7 +50,11 @@ class UsersController < ApplicationController
     params.require(:user).permit(:full_name, :email, :password, :password_confirmation)
   end
 
-  def find_user
-    @user = User.find(params[:id])
-  end
+  # def authenticate_admin
+  #   if current_user && current_user.admin 
+  #     redirect_to action: "index"
+  #   else
+  #     render "You are not allowed in this page"
+  #   end
+  # end
 end
