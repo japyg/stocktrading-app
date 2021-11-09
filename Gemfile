@@ -60,3 +60,6 @@ gem 'nested_scaffold'
 
 gem 'rspec-rails', '~> 5.0', '>= 5.0.2'
 
+
+
+gem 'iex-ruby-client'
