@@ -2,7 +2,11 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   # before_action :authenticate_admin
   
-       
+  def my_portfolio
+    @user = current_user
+    @tracked_stocks = current_user.stocks
+  end
+      
   def index
     if current_user.admin 
       @users = User.all
@@ -58,3 +62,4 @@ class UsersController < ApplicationController
   #   end
   # end
 end
+
