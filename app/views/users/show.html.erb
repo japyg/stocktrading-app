@@ -1,0 +1,16 @@
+<h2>User Details</h2>
+
+<table>
+  <tr>
+    <th>Full Name</th>
+    <th>Email</th>
+    <th>Created At</th>
+    <th>Updated At</th>   
+  </tr>
+    <tr>
+      <td><%= @user.full_name %></td>
+      <td><%= @user.email %></td>   
+      <td><%= @user.created_at.strftime("%Y-%m-%d %H:%M") %></td>   
+      <td><%= @user.updated_at.strftime("%Y-%m-%d %H:%M") %></td>   
+    </tr>
+</table>
