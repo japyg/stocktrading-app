@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   # before_action :authenticate_admin
   
-       
   def index
     if current_user.admin 
       @users = User.all
@@ -50,5 +49,5 @@ class UsersController < ApplicationController
     params.require(:user).permit(:full_name, :email, :password, :password_confirmation)
   end
 
-  UserMailer.signup_confirmation(@user).deliver
+  
 end
