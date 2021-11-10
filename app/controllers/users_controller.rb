@@ -1,3 +1,4 @@
+
 class UsersController < ApplicationController
   before_action :authenticate_user!
   # before_action :authenticate_admin
@@ -52,3 +53,4 @@ class UsersController < ApplicationController
 
   UserMailer.signup_confirmation(@user).deliver
 end
+
