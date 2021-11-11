@@ -51,6 +51,6 @@ class UsersController < ApplicationController
     params.require(:user).permit(:full_name, :email, :password, :password_confirmation)
   end
 
-  UserMailer.signup_confirmation(@user).deliver
+  # UserMailer.signup_confirmation(@user).deliver
 end
 
