@@ -54,12 +54,6 @@ class UsersController < ApplicationController
     params.require(:user).permit(:full_name, :email, :password, :password_confirmation)
   end
 
-  # def authenticate_admin
-  #   if current_user && current_user.admin 
-  #     redirect_to action: "index"
-  #   else
-  #     render "You are not allowed in this page"
-  #   end
-  # end
+  # UserMailer.signup_confirmation(@user).deliver
 end
 

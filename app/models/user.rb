@@ -12,12 +12,11 @@ class User < ApplicationRecord
     stocks.where(id: stock.id).exists?    
   end
   
-  def under_stock_limit?
-    stocks.count < 10
-  end
-
   def can_track_stock?(ticker_symbol)
-    under_stock_limit? && !stock_already_tracked?(ticker_symbol)
+    !stock_already_tracked?(ticker_symbol)
   end
        
+  
+  validates :full_name, presence: true         
+
 end
