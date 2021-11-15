@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   match '/users',   to: 'users#index',   via: 'get'
 
   root "home#index"
-
+  get 'my_portfolio', to: 'users#my_portfolio'
+  get 'search_stock', to: 'stocks#search'
 end

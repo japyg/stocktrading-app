@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   # before_action :authenticate_admin
   
+  def my_portfolio
+  end
        
   def index
     if current_user.admin 
