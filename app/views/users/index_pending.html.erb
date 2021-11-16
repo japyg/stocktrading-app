@@ -1,0 +1,21 @@
+
+ 
+  <table>
+    
+      <% @users.each do |user| %>
+        <% if user.approved == nil %>
+        <tr>
+          <td><%= user.full_name %></td>
+          <td><%= user.email %>
+          <td><%= user.approved %></td>
+          <td><%= user.created_at.strftime("%b %e, %Y ") %></td>
+          
+          <td>
+            <td><%= button_to "Approve", approved_path(id: user.id), method: 'put' %></td>
+             
+          </td>
+        </tr>
+        <% end %>
+      <% end %>
+  </table>
+

@@ -10,6 +10,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def index_pending
+    if current_user.admin 
+      @users = User.all
+    else
+      redirect_to root_path
+    end
+  end
+
   def new
     @user = User.new
   end
@@ -28,9 +36,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def edit
-    @user = User.find(params[:id])
-  end
+  # def show_pending
+  #   @users = User.where(status: false)
+  # end
 
   def update
     @user = User.find(params[:id])
@@ -40,6 +48,28 @@ class UsersController < ApplicationController
       else 
         format.html { render :edit }
       end
+    end
+  end
+
+  def approved
+    @user = User.all
+    @user = User.find_by(id: params[:id])
+    @user.update(approved: true)
+    return unless @user.save
+
+    flash[:notice] = 'Successfully approved trader registration'
+    # ApprovedAccountMailer.with(email: @user.email).approve_email.deliver_now
+    # CreateUserWallet.call(@user)
+    redirect_to admin_users_pending_path
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    if @user.destroy
+      flash[:notice] = 'You have Successfully rejected pending trader'
+
+    else
+      flash.now[:alert] = 'There is something wrong please try again.'
     end
   end
 
