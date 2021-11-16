@@ -36,9 +36,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  # def show_pending
-  #   @users = User.where(status: false)
-  # end
 
   def update
     @user = User.find(params[:id])
@@ -58,8 +55,7 @@ class UsersController < ApplicationController
     return unless @user.save
 
     flash[:notice] = 'Successfully approved trader registration'
-    # ApprovedAccountMailer.with(email: @user.email).approve_email.deliver_now
-    # CreateUserWallet.call(@user)
+    ApprovedAccountMailer.with(email: @user.email).approve_email.deliver_now
     redirect_to admin_users_pending_path
   end
 
