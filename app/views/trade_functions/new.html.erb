@@ -1,0 +1,26 @@
+<h1>Trade</h1>
+
+<%=form_with url: @trade_function, method: :get do |form|%>
+<%= form.hidden_field :stock_id, value: params [:stock_id]%>
+<%= form.hidden_field :user_id, value: current_user.id%>
+<%= form.hidden_field :ticker, value: params [:ticker]%>
+<%= form.select :transaction_type, ["buy","sell"]%>
+<%= form.label :quantity%>
+<%= form.number_field :quantity%>
+<%= form.submit 'Trade'%>
+<% end %>
+
+<div>
+  <strong> Company Name: <%@stock.name%></strong>
+  <strong> Stock Price : <%@stock.last_price%></strong>
+  <strong> Current Quantity of stock: <%@stock.stock_quantity%></strong>
+</div>
+
+<% if !@trade_function.quantity.blank?%>
+  <div>
+  <strong> Quantity of stocks to trade<%= @trade_function.trade_type%>:<%@trade_function.quantity%></strong>
+  <strong> Total Price: <%@trade_function.total_price%></strong>
+  <%=link_to 'Confirm', trade_functions_path( transaction_type: @trade_function.transaction_type, quantity: @trade_function.quantity , user_id: current_user.id, stock_id: @trade_function.stock_id, total_price: @trade_function.total_price ),
+                        method: :post,%>
+  </div>
+  <%end%>                      

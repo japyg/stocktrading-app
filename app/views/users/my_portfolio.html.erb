@@ -22,6 +22,8 @@
   <strong>Symbol:</strong> <%= @stock.ticker%>
   <strong>Name:</strong> <%= @stock.name%>
   <strong>Price</strong> <%= @stock.last_price%>
+  <%= link_to 'Trade', new_trade_function_path(@stock),
+                                    class: 'btn btn-xs btn-danger' %>
 </div>
 <%end%>
 
