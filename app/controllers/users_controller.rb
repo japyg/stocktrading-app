@@ -59,7 +59,7 @@ class UsersController < ApplicationController
     redirect_to admin_users_pending_path
   end
 
-  def destroy
+  def remove_pending_user
     @user = User.find(params[:id])
     if @user.destroy
       flash[:notice] = 'You have Successfully rejected pending trader'
